@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 
+      将 list 中的每项数据，生产一个p元素
+
+      item in list 中:
+      item 表示list数组中的每一项
+      list 表示 data 中list数据
+     -->
+    <!-- <p v-for="item in list">ID：{{ item.id }} , name：{{ item.name }}</p> -->
+
+    <p v-for="(item, index) in list">
+      索引号为：{{ index }}，
+      ID：{{ item.id }} , 
+      name：{{ item.name }}
+    </p>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    // 需求：将列表数据展示在页面中
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        list: [
+          { id: 1, name: '吃饭' },
+          { id: 2, name: '睡觉' },
+          { id: 3, name: '打豆豆' }
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

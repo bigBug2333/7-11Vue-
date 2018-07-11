@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" id="text">
+    <p id="p1"></p>
+  </div>
+
+  <script>
+    var text = document.getElementById('text')
+    var p1 = document.getElementById('p1')
+
+    var data = {}
+    var temp
+    Object.defineProperty(data, 'txt', {
+      // 1 修改数据的值，让文本框的值改变（Model ====> View）
+      set: function (value) {
+        text.value = value
+        p1.innerText = value
+        temp = value
+      },
+
+      get: function () {
+        return temp
+      }
+    })
+
+    // 2 修改文本框的值，让数据也改变
+    // 监听文本框的输入事件
+    text.oninput = function () {
+      // console.log('文本框的值变了，当前文本框的值：', this.value)
+      data.txt = this.value
+    }
+  </script>
+</body>
+
+</html>

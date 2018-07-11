@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ msg }}</h1>
+    <!-- 
+      v-on:事件名称 来绑定事件
+
+      v-on:click="事件处理程序"
+     -->
+    <!-- <button v-on:click="fn">点我</button> -->
+
+    <!-- 简化语法： @click="fn" -->
+    <button @click="fn" @mouseenter="foo">点我</button>
+  </div>
+
+  <script src="./vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '聪聪'
+      },
+      // methods配置项，用来指定vue中用到的方法
+      // 事件处理程序也是方法，因此，也需要放到 methods 配置项中
+      methods: {
+        fn: function () {
+          // console.log('你点我了', this.msg)
+
+          this.msg = '玺哥'
+        },
+
+        foo: function () {
+          console.log('鼠标过来了')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

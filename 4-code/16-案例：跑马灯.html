@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="lang">浪起来</button>
+    <button @click="stop">安静</button>
+    <hr>
+    <h1>{{ content }}</h1>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    // 添加一个全局的标记，用来确定是否开启了定时器
+    var flag = false
+    var timerId
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        content: '猥琐发育，别浪！'
+      },
+
+      methods: {
+        lang () {
+          // 思路：
+          // 1 获取到第一个字
+          // 2 获取到剩余的字符串
+          // 3 拿着剩余字符串 加上 第一个字
+          var that = this
+          
+          if (flag) {
+            // 开过了，直接返回
+            return
+          }
+          flag = true
+          // clearInterval(timerId)
+          
+          timerId = setInterval(function () {
+            // 第一个
+            var first = that.content.slice(0, 1)
+            // 剩下
+            var left = that.content.slice(1)
+            
+            // 重新赋值给 content，那么在页面中就看到这个数据变化了
+            that.content = left + first
+          }, 500)
+        },
+
+        // 停止
+        stop () {
+          clearInterval(timerId)
+          flag = false
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

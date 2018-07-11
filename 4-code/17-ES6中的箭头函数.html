@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var obj = {
+      name: '对象obj',
+
+      say () {
+        // console.log(this)
+        // setTimeout(function () {
+        //   console.log(this)
+        //   console.log('对象obj的name属性值为：', this.name)
+        // }, 200)
+
+        // setTimeout(function () {}, 200)
+        // 箭头函数：
+        setTimeout(() => {
+          console.log('箭头函数中this为：', this)
+          console.log('对象obj的name属性值为：', this.name)
+
+          var fn = () => {
+            console.log('内部箭头函数中的this：', this)
+          }
+          fn()
+        }, 200)
+      }
+    }
+    obj.say()
+
+    // 箭头函数：
+    // 1 箭头函数自身没有this
+    // 2 箭头函数中的this是由外部的函数决定的，也就是说：外部函数中的this指向谁，那么，箭头函数中的thiz就指向谁
+    // => 念作： goes to
+
+    // 语法：
+    // function fn () {}
+    // var fn = function () {}
+    // var fn = () => {}
+
+    // 无参数：
+    // var fn = function () {
+    //   console.log('普通函数fn')
+    // }
+    // var fn = () => {
+    //   console.log('箭头函数fn')
+    // }
+    // fn()
+
+    // 有参数:
+    // 如果只有一个参数，小括号可以省略
+    // 如果有一个以上的参数，小括号不能省略！！！
+    // var fn = function (num) {
+    //   console.log('参数num为：', num)
+    // }
+    // var fn = (num) => {
+    //   console.log('参数num为：', num)
+    // }
+    // var fn = (num, str) => {
+    //   console.log('参数num为：', num, str)
+    // }
+    // fn(6, 'abc')
+
+    // 有返回值：
+    // 如果箭头函数中只有一个return语句，此时，可以将 {} 以及 return 关键字省略
+    // var fn = function () {
+    //   return 22
+    // }
+    // var fn = () => {
+    //   return 22
+    // }
+    // var fn = () => 22
+    // var fn = () => {
+    //   console.log('内哦让那个')
+    //   return 22
+    // }
+    // console.log('返回值为:', fn())
+  </script>
+</body>
+
+</html>

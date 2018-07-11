@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="num1">+
+    <input type="text" v-model="num2">
+    <button @click="add">=</button>
+    结果为：
+    <span v-text="result"></span>
+  </div>
+  
+  <script src="./vue.js"></script>
+  <script>
+    // 要求：点击 = 按钮，将结果展示在 span 中
+    //      使用 v-text 展示结果
+    
+    var vm = new Vue({
+      el: '#app',
+
+      data: {
+        num1: '',
+        num2: '',
+        result: ''
+      },
+
+      methods: {
+        // add: function () {
+        //   this.result = (this.num1 - 0) + (this.num2 - 0)
+        // }
+
+        // ES6中对象方法的语法：
+        add () {
+          this.result = (this.num1 - 0) + (this.num2 - 0)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

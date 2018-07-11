@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" id="text">
+    <p id="p1"></p>
+  </div>
+  <script>
+    // 步骤：
+    // 1 让数据变为响应式（Object.defineProperty）
+    // 2 获取到DOM对象
+    // 3 实现数据改变后，将对应的DOM元素改变
+    // 4 文本框的值改变后，将对应的数据也改变
+
+    var text = document.getElementById('text')
+    var p1 = document.getElementById('p1')
+
+    var data = {}
+    var temp
+    Object.defineProperty(data, 'txt', {
+      get: function () {
+        return temp
+      },
+      set: function (val) {
+        temp = val
+
+        text.value = val
+        p1.innerText = val
+      }
+    })
+    
+    // 只要文本框的值改变，这个事件就会触发
+    text.oninput = function () {
+      data.txt = this.value
+    }
+
+    data.txt = '默认值'
+    console.log(data.txt)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ msg }}</h1>
+
+    <p>{{ 1 }}</p>
+    <p>{{ 'abc' }}</p>
+    <p>{{ true }}</p>
+    <p>{{ 1 > 2 ? '大于' : '小于' }}</p>
+    <p>{{ ['a', 'b', 'c'].join('---') }}</p>
+    <p>这是原始内容，{{ msg + '>>>>' + '666' }} ~~</p>
+
+    <!-- 错误演示： -->
+    <!-- <p>{{ if (true) {} }}</p> -->
+    <!-- <p>{{ for (var i = 0; i < 10; i++) }}</p> -->
+    <p title="{{ msg }}">这是一段文字</p>
+  </div>
+
+  <script src="./vue.js"></script>
+  <script>
+    // {{}} 在Vue中叫做：Mustache语法（插值表达式，小胡子语法）
+    // 用来展示数据，会将表达式的值计算出来，并且展示在所在位置
+    // {{}} 中可以出现任意的JS表达式，但是，不能出现JS语句！！！
+
+    // 注意：{{}} 不能在HTML元素的属性中使用！！！
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Vue 大法好！'
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- View 视图 -->
+  <div id="app">
+    {{ msg }}
+
+    <input type="text" v-model="msg">
+    <p>
+      <input type="checkbox" v-model="isChecked">
+    </p>
+  </div>
+
+  <script src="./vue.js"></script>
+  <script>
+    // 1 框架和库的本质区别： 控制反转
+    // 使用库的时候 开发人员 起到主导作用
+    // 使用框架的时候由 框架 起到主导作用
+
+    // 2 MVC 和 MVVM
+    // MVC的组成：
+    // M （Model） 数据模型
+    // V （View） 视图，对于前端来说就是HTML页面
+    // C （Controller） 控制器，数据模型和视图之间沟通的桥梁
+
+    // MVVM 模式：更符合前端的场景
+    // 在前端中，需要频繁的维护数据和视图之间的同步
+    // 而有了MVVM模式以后，模式自动处理了 数据 和 视图 之间双向同步的问题
+    // 在这种模式中，只需要操作 数据，而不再关注视图（DOM）
+
+    // 3 Vue的基本使用
+    //  1 安装vue： npm i vue -S
+    //  2 引入
+    //  3 创建Vue实例
+    
+    // vm 实例，就是 MVVM 中的VM（View Model）
+    var vm = new Vue({
+      // 指定Vue管理的边界
+      el: '#app',
+
+      // 指定在视图中使用的数据：M（Model）
+      data: {
+        msg: 'Hello Vue',
+        isChecked: true
+      }
+    })
+
+    // 常用指令：
+    //  v-model 用在表单元素中，来实现数据的双向绑定
+    //    对于不同的表单元素，操作的值可能不一样，比如：文本框 --> value属性
+    //                                              复选框 --> 选中状态
+
+    // 数据双向绑定的原理：
+    //  ES5中提供的 Object.defineProperty() 方法
+    //  IE8不支持这个方法，因此，Vue不支持 IE8 及其以下版本的IE浏览器
+    
+    // Object.defineProperty 作用：为对象添加属性
+
+    // Object.defineProperty 的基本用法：
+    var obj = {}
+    var temp
+
+    Object.defineProperty(obj, 'msg', {
+      get: function () {
+        console.log('你读取了属性msg的值')
+        return temp
+      },
+      set: function (value) {
+        console.log('你设置了属性msg的值')
+        temp = value
+      }
+    })
+
+    console.log('读取：', obj.msg)
+    obj.msg = '666'
+  </script>
+</body>
+
+</html>

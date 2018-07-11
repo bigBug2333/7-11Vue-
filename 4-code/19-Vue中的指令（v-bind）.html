@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 
+      v-bind 指令来给HTML属性绑定动态数据
+     -->
+    <!-- <h1 v-bind:title="msg">这是一个大标题</h1> -->
+
+    <!-- 简化语法： :title="msg" -->
+    <h1 :title="msg">这是一个大标题</h1>
+
+    <!-- 给图片标签动态设置src -->
+    <img :src="imgSrc" alt="">
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '鼠标一上来，就能看到我',
+        imgSrc: './imgs/1.png'
+      }
+    })
+  </script>
+</body>
+
+</html>

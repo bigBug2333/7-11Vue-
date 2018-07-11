@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ msg }}</h1>
+  </div>
+
+  <!-- <p>{{ msg }}</p> -->
+
+  <script src="./vue.js"></script>
+  <script>
+    // 1 el 指定了Vue管理的边界，只有在el中的内容才会收到Vue的管理
+    // 2 Vue 是构造函数，首字母大写
+    // 3 Vue 构造函数参数对象中的属性，都是固定的，不能修改随意修改属性名称
+    // 4 一个页面中，只会有一个 Vue 的实例
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Vue 大法好！'
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <input type="text" v-model="txt">
+    <input type="text" v-model="txt">
+    <p>{{ txt }}</p>
+    <p>{{ txt }}</p>
+    <p>{{ txt }}</p>
+    <p>{{ txt }}</p>
+    <p>{{ txt }}</p>
+    <p>{{ txt }}</p>
+    <p>{{ txt }}</p>
+    <p>{{ txt }}</p> -->
+  </div>
+
+  <script src="./vue.js"></script>
+  <script>
+    /* 
+      Vue中双向数据绑定的原理：Object.defineProperty()方法
+      Object.defineProperty 方法是 ES5 中提供的一个方法
+
+      这个方法用来给对象添加属性，并且可以通过 getter/setter 读写器，来实现对数据
+      读取和设置，进行一些额外的操作
+    
+    */
+
+    // 基础语法：
+    var obj = {}
+
+    // 准备临时变量
+    var temp
+
+    // 通过 Object.defineProperty 来给对象obj添加txt属性
+    // 第一个参数：表示要给哪个对象添加属性
+    // 第二个参数：表示要添加属性的名称，是 string
+    // 第三个参数：是一个对象，表示对该属性的一些描述信息
+    Object.defineProperty(obj, 'txt', {
+      // 当读取（访问）txt属性的时候，会调用这个方法
+      get: function () {
+        console.log('您读取了 txt 属性')
+
+        // 方法的返回值：表示读取到的属性值
+        return temp
+      },
+
+      // 当给txt属性设置值的时候，会调用这个方法
+      set: function (value) {
+        // value 表示：给属性设置的值
+        console.log('您设置了 txt 属性的值，获取到参数值为：', value)
+        temp = value
+      }
+    })
+
+    // var vm = new Vue({
+    //   el: '#app',
+    //   data: {
+    //     txt: '默认值'
+    //   }
+    // })
+  </script>
+</body>
+
+</html>
